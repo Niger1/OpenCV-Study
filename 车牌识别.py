@@ -46,9 +46,9 @@ def preprocessor(image):
     image = cv2.GaussianBlur(image, (1, 1), 0)
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(gray_image, 0, 255, cv2.THRESH_OTSU + cv2.THRESH_BINARY)
-    # kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(1,1))
-    # image = cv2.dilate(binary,kernel)
-    # cv2.imshow('preprocessor',binary)
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 1))
+    image = cv2.dilate(binary, kernel)
+    cv2.imshow('preprocessor', binary)
     return binary
 
 
